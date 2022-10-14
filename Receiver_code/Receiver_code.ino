@@ -15,7 +15,8 @@
 //        5. 4 x BO MOTORS
 //        6. L298N MOTOR DRIVER
 //        7. BATTERY
-//      
+//
+//       THIS PROGRAM WILL BE STORED IN RECEIVER'S ARDUINO.
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 void setup() {
