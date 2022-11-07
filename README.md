@@ -10,7 +10,10 @@ THIS TEAM WORKS FOR [ROBODARSHAN](http://student.iiests.ac.in/index.php/robodars
 
 MEMBERS -
 <br>**AMIT BARMAN**, SOPHOMORE AT IIEST SHIBPUR, **ETC'25**<br>
-         **SOUVIK NATH**, SOPHOMORE AT IIEST SHIBPUR, **ME'25**
+         **SOUVIK NATH**, SOPHOMORE AT IIEST SHIBPUR, **EE'25**<br>
+         **VINIT RANJAN**, SOPHOMORE AT IIEST SHIBPUR, **CST'25**<br>
+         **MD SUHAIL AZAM**, SOPHOMORE AT IIEST SHIBPUR, **ETC'25**
+
          
          
 > *We are working on this project. In this project we are going to use*
@@ -20,9 +23,9 @@ MEMBERS -
 > 2. AN ARDUINO NANO (FOR TRANSMITTER)
 > 3. 2 x NRF24LO1+PA+LNA MODULE
 > 4. 2 x JOYSTICKS
-> 5. 4 x BO MOTORS
+> 5. 4 x 1000RPM DC MOTORS
 > 6. L298N MOTOR DRIVER
-> 7. BATTERY
+> 7. 4 x 3.7V LI-ION BATTERY
 
 <br>
 
