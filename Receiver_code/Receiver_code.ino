@@ -6,6 +6,8 @@
 //      
 //      MEMBERS - AMIT BARMAN,SOPHOMORE AT IIEST SHIBPUR,ETC'25
 //                SOUVIK NATH,SOPHOMORE AT IIEST SHIBPUR,ME'25
+//                VINIT RANJAN,SOPHOMORE AT IIEST SHIBPUR,CST'25
+//                MD SUHAIL AZAM,SOPHOMORE AT IIEST SHIBPUR,ETC'25
 //      
 //      IN OUR PROJECT WE ARE GOING TO USE -
 //        1. AN ARDUINO UNO (FOR RECEIVER)
@@ -31,13 +33,29 @@
 #define EnA 3
 #define EnB 4
 
-void setup() {
-  // put your setup code here, to run once:
-  
+const byte pipe_address[20]="0001202002"; // transmitter pipe address
+int X,Y;
+int mS1=0,mS2=0,joystick[2];  //motor speed 1&2 declearation
 
+void setup() {
+  // run onetime
+  pinMode(EnA,OUTPUT);
+  pinMode(EnB,OUTPUT);
+  pinMode(in1,OUTPUT);
+  pinMode(in2,OUTPUT);
+  pinMode(in3,OUTPUT);
+  pinMode(in4,OUTPUT);
+  
+  //start serial communication
+  Serial.begin(9600); //port 9600
+  radio.begin();
+  radio.openReadingPipe(0,pipe_address);
+  radio.startListening();
+
+  //at first all the in pin should be at low
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  
 
 }
