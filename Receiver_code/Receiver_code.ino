@@ -33,9 +33,11 @@
 #define EnA 3
 #define EnB 4
 
+RF24 radio(5,6);    //CE,CSN
 const byte pipe_address[20]="0001202002"; // transmitter pipe address
 int X,Y;
 int mS1=0,mS2=0,joystick[2];  //motor speed 1&2 declearation
+char receiveData[100]="";
 
 void setup() {
   // run onetime
@@ -53,9 +55,46 @@ void setup() {
   radio.startListening();
 
   //at first all the in pin should be at low
+  digitalWrite(in1,LOW);
+  digitalWrite(in2,LOW);
+  digitalWrite(in3,LOW);
+  digitalWrite(in4,LOW);
 }
 
 void loop() {
-  
+  if(radio.available()){    //if signal is available
+    radio.read(joystick,sizeof(joystick));  //joystick value and it's size
+    radio.read(&receiveData,sizeof(receiveData)); //receivedata address and it's size
+    int sp=Serial.parseInt(); // variable serial integer from serial
+    Y=joystick[0];
+    X=joystick[1];    // these value may be changed accoring to our circuit configeration
 
+  }
+
+    // joystick's value configeration along Y-axis--
+    //0      512       1024
+  if(Y<490){
+    // Moving backward direction (using approximation)
+    digitalWrite(in1,HIGH);
+    digitalWrite(in2,LOW);
+    digitalWrite(in3,HIGH);
+    digitalWrite(in4,LOW);
+
+    mS1=map(Y,sp);
+    mS2=map(Y,sp);
+  }
+  else if(Y>540){
+    // Moving forward direction (using approximation)
+    digitalWrite(in1,LOW);
+    digitalWrite(in2,HIGH);
+    digitalWrite(in3,LOW);
+    digitalWrite(in4,HIGH);
+
+    mS1=map(Y,sp);
+    mS2=map(Y,sp);
+  }
+  else{
+    mS1=0;
+    mS2=0;
+  }
 }
