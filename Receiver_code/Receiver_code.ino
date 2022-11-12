@@ -39,8 +39,7 @@ int X,Y;
 int mS1=0,mS2=0,joystick[2];  //motor speed 1&2 declearation
 char receiveData[100]="";
 
-void setup() {
-  // run onetime
+void setup() {  // run onetime
   pinMode(EnA,OUTPUT);
   pinMode(EnB,OUTPUT);
   pinMode(in1,OUTPUT);
@@ -65,7 +64,6 @@ void loop() {
   if(radio.available()){    //if signal is available
     radio.read(joystick,sizeof(joystick));  //joystick value and it's size
     radio.read(&receiveData,sizeof(receiveData)); //receivedata address and it's size
-    int sp=Serial.parseInt(); // variable serial integer from serial
     Y=joystick[0];
     X=joystick[1];    // these value may be changed accoring to our circuit configeration
 
@@ -80,8 +78,8 @@ void loop() {
     digitalWrite(in3,HIGH);
     digitalWrite(in4,LOW);
 
-    mS1=map(Y,sp);
-    mS2=map(Y,sp);
+    mS1=map(Y,490,0,0,255);
+    mS2=map(Y,490,0,0,255);
   }
   else if(Y>540){
     // Moving forward direction (using approximation)
@@ -90,11 +88,43 @@ void loop() {
     digitalWrite(in3,LOW);
     digitalWrite(in4,HIGH);
 
-    mS1=map(Y,sp);
-    mS2=map(Y,sp);
+    mS1=map(Y,540,1023,0,255);  //value btn 0 to 255
+    mS2=map(Y,540,1023,0,255);
   }
   else{
     mS1=0;
     mS2=0;
   }
+  
+  if (X>540){
+    int i=map(X,540,1023,0,255);
+    mS1=mS1+i;
+    mS2=mS2-i;
+    if (mS1>255)
+    {
+      mS1=255;
+    }
+    if (mS2<0)
+    {
+      mS2=0;
+    } 
+  }
+  
+  if(X<490){
+    int i=map(X,490,0,0,255); //increment/decrement factor
+    mS1=mS1-i;
+    mS2=mS2+i;
+    if (mS1<0)
+    {
+      mS1=0;
+    }
+    if (mS2>255)
+    {
+      mS2=255;
+    } 
+  }
+
+  analogWrite(EnA,mS1);
+  analogWrite(EnB,mS2);
+  
 }
