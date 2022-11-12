@@ -38,5 +38,8 @@ void setup() {
 }
 
 void loop() {
-
+  joystick[0]=analogRead(A4);    // A4 pin
+  joystick[1]=analogRead(A3);   // A3 pin
+  Serial.println(joystick[0]+','+joystick[1]);
+  radio.write(joystick,sizeof(joystick));
 }
