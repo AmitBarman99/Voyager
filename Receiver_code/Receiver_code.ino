@@ -34,7 +34,7 @@
 #define EnB 4
 
 RF24 radio(5,6);    //CE,CSN
-const byte pipe_address[20]="0001202002"; // transmitter pipe address
+const byte pipe_address[6]="00001"; // transmitter pipe address
 int X,Y;
 int mS1=0,mS2=0,joystick[2];  //motor speed 1&2 declearation
 char receiveData[100]="";
@@ -51,6 +51,7 @@ void setup() {  // run onetime
   Serial.begin(9600); //port 9600
   radio.begin();
   radio.openReadingPipe(0,pipe_address);
+  radio.setPALevel(RF24_PA_MAX);
   radio.startListening();
 
   //at first all the in pin should be at low
@@ -65,39 +66,40 @@ void loop() {
     radio.read(joystick,sizeof(joystick));  //joystick value and it's size
     radio.read(&receiveData,sizeof(receiveData)); //receivedata address and it's size
     Y=joystick[0];
-    X=joystick[1];    // these value may be changed accoring to our circuit configeration
-
+    X=joystick[1];  // these value may be changed accoring to our circuit configeration
+    Serial.println(Y);
+    Serial.println(X);
   }
 
     // joystick's value configeration along Y-axis--
     //0      512       1024
-  if(Y<490){
+  if(Y<470){
     // Moving backward direction (using approximation)
     digitalWrite(in1,HIGH);
     digitalWrite(in2,LOW);
     digitalWrite(in3,HIGH);
     digitalWrite(in4,LOW);
 
-    mS1=map(Y,490,0,0,255);
-    mS2=map(Y,490,0,0,255);
+    mS1=map(Y,470,0,0,255);
+    mS2=map(Y,470,0,0,255);
   }
-  else if(Y>540){
+  else if(Y>550){
     // Moving forward direction (using approximation)
     digitalWrite(in1,LOW);
     digitalWrite(in2,HIGH);
     digitalWrite(in3,LOW);
     digitalWrite(in4,HIGH);
 
-    mS1=map(Y,540,1023,0,255);  //value btn 0 to 255
-    mS2=map(Y,540,1023,0,255);
+    mS1=map(Y,550,1023,0,255);  //value btn 0 to 255
+    mS2=map(Y,550,1023,0,255);
   }
   else{
     mS1=0;
     mS2=0;
   }
   
-  if (X>540){
-    int i=map(X,540,1023,0,255);
+  if (X>550){
+    int i=map(X,550,1023,0,255);
     mS1=mS1+i;
     mS2=mS2-i;
     if (mS1>255)
@@ -110,8 +112,8 @@ void loop() {
     } 
   }
   
-  if(X<490){
-    int i=map(X,490,0,0,255); //increment/decrement factor
+  if(X<470){
+    int i=map(X,470,0,0,255); //increment/decrement factor
     mS1=mS1-i;
     mS2=mS2+i;
     if (mS1<0)

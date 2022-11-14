@@ -25,7 +25,7 @@
 #include<SPI.h>
 
 RF24 radio(9,10);   //CE and CSN pin
-const byte pipeaddress[20]="0001202002";    //same as receiver code
+const byte pipeaddress[6]="00001";    //same as receiver code
 char receiveData[100]="";
 int joystick[2];
 
@@ -33,6 +33,7 @@ void setup() {
   Serial.begin(9600);
   radio.begin();
   radio.openWritingPipe(pipeaddress);
+  radio.setPALevel(RF24_PA_MAX);
   radio.stopListening();
 
 }
@@ -40,6 +41,7 @@ void setup() {
 void loop() {
   joystick[0]=analogRead(A4);    // A4 pin
   joystick[1]=analogRead(A3);   // A3 pin
-  Serial.println(joystick[0]+','+joystick[1]);
+  Serial.println(joystick[0]);
+  Serial.println(joystick[1]);
   radio.write(joystick,sizeof(joystick));
 }
