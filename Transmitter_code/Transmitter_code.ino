@@ -26,8 +26,8 @@
 
 RF24 radio(9,10);   //CE and CSN pin
 const byte pipeaddress[6]="00001";    //same as receiver code
-char receiveData[100]="";
-int joystick[2];
+char receiveData[32]="";
+int joystick[2]={0,0};
 
 void setup() {
   Serial.begin(9600);

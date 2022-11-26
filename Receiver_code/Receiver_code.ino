@@ -35,9 +35,9 @@
 
 RF24 radio(5,6);    //CE,CSN
 const byte pipe_address[6]="00001"; // transmitter pipe address
-int X,Y;
+int X=512,Y=512;
 int mS1=0,mS2=0,joystick[2];  //motor speed 1&2 declearation
-char receiveData[100]="";
+char receiveData[32]="";
 
 void setup() {  // run onetime
   pinMode(EnA,OUTPUT);
@@ -61,16 +61,19 @@ void setup() {  // run onetime
   digitalWrite(in4,LOW);
 }
 
-void loop() {
+void loop() { 
   if(radio.available()){    //if signal is available
     radio.read(joystick,sizeof(joystick));  //joystick value and it's size
     radio.read(&receiveData,sizeof(receiveData)); //receivedata address and it's size
-    Y=joystick[0];
+    Y=joystick[0q];
     X=joystick[1];  // these value may be changed accoring to our circuit configeration
+  }
+  else{
+    X=512;
+    Y=512;
+  }
     Serial.println(Y);
     Serial.println(X);
-  }
-
     // joystick's value configeration along Y-axis--
     //0      512       1024
   if(Y<470){
