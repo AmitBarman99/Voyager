@@ -65,14 +65,15 @@ void loop() {
   if(radio.available()){    //if signal is available
     radio.read(joystick,sizeof(joystick));  //joystick value and it's size
     radio.read(&receiveData,sizeof(receiveData)); //receivedata address and it's size
-    Y=joystick[0q];
+    Y=joystick[0];
     X=joystick[1];  // these value may be changed accoring to our circuit configeration
   }
   else{
     X=512;
     Y=512;
   }
-    Serial.println(Y);
+    Serial.print(Y);
+    Serial.print("   ");
     Serial.println(X);
     // joystick's value configeration along Y-axis--
     //0      512       1024
@@ -103,29 +104,29 @@ void loop() {
   
   if (X>550){
     int i=map(X,550,1023,0,255);
-    mS1=mS1+i;
-    mS2=mS2-i;
-    if (mS1>255)
+    mS1=mS1-i;
+    mS2=mS2+i;
+    if (mS2>255)
     {
-      mS1=255;
+      mS2=255;
     }
-    if (mS2<0)
+    if (mS1<0)
     {
-      mS2=0;
+      mS1=0;
     } 
   }
   
   if(X<470){
     int i=map(X,470,0,0,255); //increment/decrement factor
-    mS1=mS1-i;
-    mS2=mS2+i;
-    if (mS1<0)
+    mS1=mS1+i;
+    mS2=mS2-i;
+    if (mS2<0)
     {
-      mS1=0;
+      mS2=0;
     }
-    if (mS2>255)
+    if (mS1>255)
     {
-      mS2=255;
+      mS1=255;
     } 
   }
 
