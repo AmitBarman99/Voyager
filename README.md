@@ -23,17 +23,12 @@ MEMBERS -
 > 2. AN ARDUINO NANO (FOR TRANSMITTER)
 > 3. 2 x NRF24LO1+PA+LNA MODULE
 > 4. 2 x JOYSTICKS
-> 5. 4 x 1000RPM DC MOTORS
+> 5. 4 x 200RPM DC MOTORS
 > 6. L298N MOTOR DRIVER
 > 7. 4 x 3.7V LI-ION BATTERY
 
 <br>
 
-```txt
-
-You can contribute in this project
-
-```
 
 ![schemetic](./images/schemetic.jpg)
 <!-- ![schemetic](https://user-images.githubusercontent.com/107401504/195871420-72fa8a73-bd15-48fa-8346-80e75e018fce.jpg) -->
