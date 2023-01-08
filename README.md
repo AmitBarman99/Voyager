@@ -1,4 +1,5 @@
 <div align="center">
+  <img align="center" width="200" src="./images/robodarshan_logo_tbg.png">
   <img align="center" width="150" src="./images/Voyager-logo.png">
 </div>
 
@@ -16,7 +17,6 @@ MEMBERS -
 
          
          
-> *We are working on this project. In this project we are going to use*
 <br>
 
 > 1. AN ARDUINO UNO (FOR RECEIVER)
@@ -35,10 +35,13 @@ You can contribute in this project
 
 ```
 
-![schemetic](https://user-images.githubusercontent.com/107401504/195871420-72fa8a73-bd15-48fa-8346-80e75e018fce.jpg)
+![schemetic](./images/schemetic.jpg)
+<!-- ![schemetic](https://user-images.githubusercontent.com/107401504/195871420-72fa8a73-bd15-48fa-8346-80e75e018fce.jpg) -->
 
 **Our progress**
-> We complete our basic set up except Electronics system
+> We completed this project
+
+
 
 ### Don't forget to give a 🌟 to this repository.
 
