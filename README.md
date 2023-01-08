@@ -41,7 +41,14 @@ You can contribute in this project
 **Our progress**
 > We completed this project
 
+## Our certificates
 
+|Name|Death race|Soccred games|
+|-|-|-|
+|Amit Barman|<img width="180" src="./images/amit_dr.jpg">|<img width="180" src="./images/amit_sg.jpg">|
+|Souvik Nath|<img width="180" src="./images/souvik_dr.jpg">|<img width="180" src="./images/souvik_sg.jpg">|
+|Vinit Ranjan|<img width="180" src="./images/vinit_dr.jpg">|<img width="180" src="./images/vinit_sg.jpg">|
+|MD Suhail Azam|<img width="180" src="./images/suhail_dr.jpg">|<img width="180" src="./images/suhail_sg.jpg">|
 
 ### Don't forget to give a 🌟 to this repository.
 
