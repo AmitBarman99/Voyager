@@ -20,14 +20,14 @@
 //    
 //       THIS PROGRAM WILL BE STORED IN TRANSMITTER'S ARDUINO.
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#include<SPI.h>
 #include<nRF24L01.h>
 #include<RF24.h>
-#include<SPI.h>
 
-RF24 radio(9,10);   //CE and CSN pin
+RF24 radio(7,8);   //CE and CSN pin
 const byte pipeaddress[6]="00001";    //same as receiver code
 char receiveData[32]="";
-int joystick[2]={0,0};
+int joystick[2];
 
 void setup() {
   Serial.begin(9600);

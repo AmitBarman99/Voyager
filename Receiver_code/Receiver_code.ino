@@ -21,9 +21,10 @@
 //       THIS PROGRAM WILL BE STORED IN RECEIVER'S ARDUINO.
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+#include<SPI.h> //SPI serial communication
 #include<nRF24L01.h>  //include nrf24l01 library
 #include<RF24.h>  //include rf24 library
-#include<SPI.h> //SPI serial communication
 //define motor driver 4 in pin
 #define in1 7
 #define in2 10
@@ -31,9 +32,9 @@
 #define in4 8
 //define enA,enB pin
 #define EnA 3
-#define EnB 4
+#define EnB 6
 
-RF24 radio(5,6);    //CE,CSN
+RF24 radio(4,5);    //CE,CSN
 const byte pipe_address[6]="00001"; // transmitter pipe address
 int X=512,Y=512;
 int mS1=0,mS2=0,joystick[2];  //motor speed 1&2 declearation
